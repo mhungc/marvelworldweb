@@ -10,14 +10,17 @@
     "@types/node": "^12.12.37",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.7",
+    "axios": "^0.19.2",
+    "cross-env": "^7.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build2": "node scripts/client-env.js DIR='./public'",
+    "start": "cross-env NODE_ENV=production npm run build2 && react-scripts start",
+    "build": "cross-env NODE_ENV=production npm run build2 && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
