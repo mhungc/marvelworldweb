@@ -18,9 +18,9 @@
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "build2": "node scripts/client-env.js DIR='./public'",
-    "start": "cross-env NODE_ENV=production npm run build2 && react-scripts start",
-    "build": "cross-env NODE_ENV=production npm run build2 && react-scripts build",
+    "prestart": "react-env",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -38,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@beam-australia/react-env": "^2.1.2"
   }
 }
