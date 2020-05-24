@@ -14,10 +14,10 @@ RUN npm run build
 # Create deployable image
 FROM beamaustralia/react-env:latest as buildenv
 WORKDIR /var/www
-# ARG ARG_REACT_APP_MARVEL
+ARG ARG_REACT_APP_MARVEL
 # RUN echo "Oh ARG_REACT_APP_MARVEL equal to: $ARG_REACT_APP_MARVEL"
 #el orden de la variable de entorno importa en la capa.
-# ENV REACT_APP_MARVEL=$ARG_REACT_APP_MARVEL
+ENV REACT_APP_MARVEL=$ARG_REACT_APP_MARVEL
 COPY --from=build app/build /var/www
 #COPY .env* /var/www/
 
