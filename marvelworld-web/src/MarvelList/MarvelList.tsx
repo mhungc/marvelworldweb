@@ -12,7 +12,7 @@ function MarvelList() {
   console.log(env("MARVEL")+"/api/MarverlWorld");
   //.get('https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey=714bb5a21a336a01dc4205c7f1146991&hash=823030e123364bed2249367876fb0b6c')
   useEffect(() => {
-    axios.get(env("MARVEL")+"/api/MarverlWorld").then((res) => {
+    axios.get("/api/MarverlWorld").then((res) => {
       let listMarvelCharacters: Array<Characters> = [];
       res.data.forEach((value: any) => {
         let character: Characters;

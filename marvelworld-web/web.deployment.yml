@@ -5,7 +5,7 @@ metadata:
   labels:
     app: my-web
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: my-web
@@ -16,15 +16,18 @@ spec:
     spec:
       containers:
       - name: my-web
-        image: acrmarvel.azurecr.io/marveldocker_marvelweb:v1
+        image: acrmarvel.azurecr.io/marveldocker_marvelweb:v34
+        env: 
+        - name: REACT_APP_MARVEL
+          value: "TEST2"
         ports:
         - containerPort: 80
         resources:
           limits:
             memory: "128Mi" #128 MB
             cpu: "200m" #200 millicpu (.2 cpu or 20% of the cpu)
-      imagePullSecrets:
-        - name: acr-secret
+      # imagePullSecrets:
+        # - name: acr-secret
 
       
 # kubectl create –f nginx.pod.yml --save-config

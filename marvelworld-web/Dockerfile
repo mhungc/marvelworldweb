@@ -6,6 +6,7 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
+COPY nginx.conf ./ 
 RUN npm ci --silent
 RUN npm install
 COPY . ./
@@ -18,7 +19,15 @@ ARG ARG_REACT_APP_MARVEL
 # RUN echo "Oh ARG_REACT_APP_MARVEL equal to: $ARG_REACT_APP_MARVEL"
 #el orden de la variable de entorno importa en la capa.
 ENV REACT_APP_MARVEL=$ARG_REACT_APP_MARVEL
+
+# Remove the default Nginx configuration file
+# RUN rm -v /etc/nginx/conf.d/*
+ADD nginx.conf /etc/nginx
+# COPY --from=build app/nginx.conf /etc/nginx/conf.d/
 COPY --from=build app/build /var/www
+
+# Append "daemon off;" to the beginning of the configuration
+# RUN echo "daemon off;" >> ../../etc/nginx/ngifrontendnx.conf
 #COPY .env* /var/www/
 
 # # production environment

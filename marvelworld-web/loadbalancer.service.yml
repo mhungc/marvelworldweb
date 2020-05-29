@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
- name: nginx-loadbalancer
+ name: web-loadbalancer
 spec:
  type: LoadBalancer
  selector:
-    app: my-backend
+    app: my-web
  ports:
-  - name: "9000"
-    port: 9000
+  - name: "80"
+    port: 80
     targetPort: 80
     
   - name: "443"
